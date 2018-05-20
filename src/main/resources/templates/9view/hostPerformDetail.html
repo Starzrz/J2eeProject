@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Blank page</title>
+    <!-- Mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Force IE9 to render in normal mode -->
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="author" content="SuggeElson" />
+    <meta name="description" content=""
+    />
+    <meta name="keywords" content=""
+    />
+    <meta name="application-name" content="sprFlat admin template" />
+    <!-- Import google fonts - Heading first/ text second -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Droid+Sans:400,700' />
+    <!--[if lt IE 9]>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!-- Css files -->
+    <!-- Icons -->
+    <link href="assets/css/icons.css" rel="stylesheet" />
+    <!-- jQueryUI -->
+    <link href="assets/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
+    <!-- Bootstrap stylesheets (included template modifications) -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!--<link href="assets/css/seatcss.css" rel="stylesheet" />-->
+    <!-- Plugins stylesheets (all plugin custom css) -->
+    <link href="assets/css/plugins.css" rel="stylesheet" />
+    <!-- Main stylesheets (template main css file) -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="assets/css/jquery.seat-charts.css" rel="stylesheet">
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="icon" href="assets/img/ico/favicon.ico" type="image/png">
+    <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
+    <meta name="msapplication-TileColor" content="#3399cc" />
+    <style type="text/css">
+        .demo{width:700px; margin:40px auto 0 auto; min-height:450px;}
+        @media screen and (max-width: 360px) {.demo {width:340px}}
+
+        .front{width: 300px;margin: 5px 32px 45px 32px;background-color: #f0f0f0;	color: #666;text-align: center;padding: 3px;border-radius: 5px;}
+        .booking-details {float: left;position: relative;width:200px;height: 450px; }
+        .booking-details h3 {margin: 5px 5px 0 0;font-size: 16px;}
+        .booking-details p{line-height:26px; font-size:16px; color:#999}
+        .booking-details p span{color:#666}
+        div.seatCharts-cell {color: #182C4E;height: 25px;width: 25px;line-height: 25px;margin: 3px;float: left;text-align: center;outline: none;font-size: 13px;}
+        div.seatCharts-seat {color: #fff;cursor: pointer;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+        div.seatCharts-row {height: 35px;}
+        div.seatCharts-seat.available {
+            background-color: #B9DEA0;
+
+        }
+        div.seatCharts-seat.second-class {
+            background-color: #B9DEA0;
+
+        }
+        div.seatCharts-seat.first-class {
+            /* 	background: url(vip.png); */
+            background-color: #3a78c3;
+        }
+        div.seatCharts-seat.focused {
+            background-color: #76B474;
+        }
+        div.seatCharts-seat.selected {
+            background-color: #E6CAC4;
+        }
+
+        div.seatCharts-seat.unavailable {background-color: #472B34;cursor: not-allowed;}
+        div.seatCharts-container {border-right: 1px dotted #adadad;width: 700px;padding: 20px;float: left;}
+        div.seatCharts-legend {padding-left: 0px;float: right;bottom: 16px;}
+        ul.seatCharts-legendList {padding-left: 0px;}
+        .seatCharts-legendItem{float:left; width:90px;margin-top: 10px;line-height: 2;}
+        span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
+        .checkout-button {display: block;width:80px; height:24px; line-height:20px;margin: 10px auto;border:1px solid #999;font-size: 14px; cursor:pointer}
+        #selected-seats {max-height: 150px;overflow-y: auto;overflow-x: none;width: 200px;}
+        #selected-seats li{float:left; width:72px; height:26px; line-height:26px; border:1px solid #d3d3d3; background:#f7f7f7; margin:6px; font-size:14px; font-weight:bold; text-align:center}
+    </style>
+
+</head>
+<body>
+<!-- Start #header -->
+<div id="header">
+    <div class="container-fluid">
+        <div class="navbar">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <i class="im-windows8 text-logo-element animated bounceIn"></i><span class="text-logo">spr</span><span class="text-slogan">flat</span>
+                </a>
+            </div>
+            <nav class="top-nav" role="navigation">
+                <ul class="nav navbar-nav pull-left">
+                    <li id="toggle-sidebar-li">
+                        <a href="#" id="toggle-sidebar"><i class="en-arrow-left2"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="full-screen"><i class="fa-fullscreen"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown"><i class="ec-cog"></i><span class="notification">10</span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#"><i class="en-database"></i> Database <span class="notification">3</span></a>
+                            </li>
+                            <li><a href="#"><i class="st-cube"></i> Packages <span class="notification blue">17</span></a>
+                            </li>
+                            <li><a href="#"><i class="st-health"></i> Disconnects <span class="notification yellow">1</span></a>
+                            </li>
+                            <li><a href="#"><i class="im-images"></i> Images <span class="notification teal">320</span></a>
+                            </li>
+                            <li><a href="#"><i class="st-users"></i> Users <span class="notification orange">2k</span></a>
+                            </li>
+                            <li><a href="#"><i class="st-meter"></i> Traffic <span class="notification magenta">2tb</span></a>
+                            </li>
+                            <li><a href="#"><i class="im-coin"></i> Finances <span class="notification pink">+3k</span></a>
+                            </li>
+                            <li><a href="#"><i class="st-folder"></i> Directories <span class="notification green">17</span></a>
+                            </li>
+                            <li><a href="#"><i class="st-bag"></i> Orders <span class="notification purple">12</span></a>
+                            </li>
+                            <li><a href="#"><i class="ec-contract"></i> Contracts <span class="notification dark">7</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown"><i class="ec-mail"></i><span class="notification">4</span></a>
+                        <ul class="dropdown-menu email" role="menu">
+                            <li class="mail-head">
+                                <div class="clearfix">
+                                    <div class="pull-left">
+                                        <a href="email-inbox.html"><i class="ec-archive"></i></a>
+                                    </div>
+                                    <span>Inbox</span>
+                                    <div class="pull-right">
+                                        <a href="email-inbox.html"><i class="st-pencil"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="search-email">
+                                <form>
+                                    <input type="text" name="search" placeholder="Search for emails">
+                                    <button type="submit"><i class="ec-search"></i>
+                                    </button>
+                                </form>
+                            </li>
+                            <li class="mail-list clearfix">
+                                <a href="#">
+                                    <img src="assets/img/avatars/128.jpg" class="mail-avatar pull-left" alt="avatar">
+                                    <p class="name">
+                                        <span class="status"><i class="en-dot"></i></span> Jason Rivera
+                                        <span class="notification">2</span>
+                                        <span class="time">12:30 am</span>
+                                    </p>
+                                    <p class="msg">
+                                        I contact you regarding my account please can you set up my pass ...
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="mail-list clearfix">
+                                <a href="#">
+                                    <img src="assets/img/avatars/129.jpg" class="mail-avatar pull-left" alt="avatar">
+                                    <p class="name">
+                                        <span class="status off"><i class="en-dot"></i></span> Steeve Mclark
+                                        <span class="notification">6</span>
+                                        <span class="time">10:26 am</span>
+                                    </p>
+                                    <p class="msg">
+                                        Good job dude awesome work here, please add theese features ...
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="mail-list clearfix">
+                                <a href="#">
+                                    <img src="assets/img/avatars/130.jpg" class="mail-avatar pull-left" alt="avatar">
+                                    <p class="name">
+                                        <span class="status off"><i class="en-dot"></i></span> Fellix Jones
+                                        <span class="notification">1</span>
+                                        <span class="time">7:15 am</span>
+                                    </p>
+                                    <p class="msg">
+                                        I have some issues when try to reach my product page can you ...
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="mail-list clearfix">
+                                <a href="#">
+                                    <img src="assets/img/avatars/131.jpg" class="mail-avatar pull-left" alt="avatar">
+                                    <p class="name">
+                                        <span class="status"><i class="en-dot"></i></span> Tina Dowsen
+                                        <span class="notification">5</span>
+                                        <span class="time">03:46 am</span>
+                                    </p>
+                                    <p class="msg">
+                                        Hello Sugge, i want to apply for your referal program , please ...
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="mail-more">
+                                <a href="email-inbox.html">View all <i class="en-arrow-right7"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <a href="#" id="toggle-header-area"><i class="ec-download"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown"><i class="br-alarm"></i> <span class="notification">5</span></a>
+                        <ul class="dropdown-menu notification-menu right" role="menu">
+                            <li class="clearfix">
+                                <i class="ec-chat"></i>
+                                <a href="#" class="notification-user"> Ric Jones </a>
+                                <span class="notification-action"> replied to your </span>
+                                <a href="#" class="notification-link"> comment</a>
+                            </li>
+                            <li class="clearfix">
+                                <i class="st-pencil"></i>
+                                <a href="#" class="notification-user"> SuggeElson </a>
+                                <span class="notification-action"> just write a </span>
+                                <a href="#" class="notification-link"> post</a>
+                            </li>
+                            <li class="clearfix">
+                                <i class="ec-trashcan"></i>
+                                <a href="#" class="notification-user"> SuperAdmin </a>
+                                <span class="notification-action"> just remove </span>
+                                <a href="#" class="notification-link"> 12 files</a>
+                            </li>
+                            <li class="clearfix">
+                                <i class="st-paperclip"></i>
+                                <a href="#" class="notification-user"> C. Wiilde </a>
+                                <span class="notification-action"> attach </span>
+                                <a href="#" class="notification-link"> 3 files</a>
+                            </li>
+                            <li class="clearfix">
+                                <i class="st-support"></i>
+                                <a href="#" class="notification-user"> John Simpson </a>
+                                <span class="notification-action"> add support </span>
+                                <a href="#" class="notification-link"> ticket</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">
+                            <img class="user-avatar" src="assets/img/avatars/48.jpg" alt="SuggeElson">SuggeElson</a>
+                        <ul class="dropdown-menu right" role="menu">
+                            <li><a href="profile.html"><i class="st-user"></i> Profile</a>
+                            </li>
+                            <li><a href="file.html"><i class="st-cloud"></i> Files</a>
+                            </li>
+                            <li><a href="#"><i class="st-settings"></i> Settings</a>
+                            </li>
+                            <li><a href="login.html"><i class="im-exit"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="toggle-right-sidebar-li"><a href="#" id="toggle-right-sidebar"><i class="ec-users"></i> <span class="notification">3</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Start #header-area -->
+        <div id="header-area" class="fadeInDown">
+            <div class="header-area-inner">
+                <ul class="list-unstyled list-inline">
+                    <li>
+                        <div class="shortcut-button">
+                            <a href="#">
+                                <i class="im-pie"></i>
+                                <span>Earning Stats</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shortcut-button">
+                            <a href="#">
+                                <i class="ec-images color-dark"></i>
+                                <span>Gallery</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shortcut-button">
+                            <a href="#">
+                                <i class="en-light-bulb color-orange"></i>
+                                <span>Fresh ideas</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shortcut-button">
+                            <a href="#">
+                                <i class="ec-link color-blue"></i>
+                                <span>Links</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shortcut-button">
+                            <a href="#">
+                                <i class="ec-support color-red"></i>
+                                <span>Support</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="shortcut-button">
+                            <a href="#">
+                                <i class="st-lock color-teal"></i>
+                                <span>Lock area</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End #header-area -->
+    </div>
+    <!-- Start .header-inner -->
+</div>
+<!-- End #header -->
+<!-- Start #sidebar -->
+<div id="sidebar">
+    <!-- Start .sidebar-inner -->
+    <div class="sidebar-inner">
+        <!-- Start #sideNav -->
+        <ul id="sideNav" class="nav nav-pills nav-stacked">
+            <li class="top-search">
+                <form>
+                    <input type="text" name="search" placeholder="Search ...">
+                    <button type="submit"><i class="ec-search s20"></i>
+                    </button>
+                </form>
+            </li>
+            <li><a href="hostInfoDetail.html">场馆信息<i class="im-screen"></i></a>
+            </li>
+            <li><a href="hostPublish">发布计划 <i class="im-apple"></i></a>
+            </li>
+            <li><a href="hostInfo.html">更改信息 <i class="im-pencil"></i></a>
+            </li>
+
+
+
+            <li><a href="hostCheckIn.html"><i class="en-upload"></i>完成订单</a>
+            </li>
+            <li><a href="hostPerformList.html"><i class="im-images"></i> 演出列表</a>
+
+
+        </ul>
+        <!-- End #sideNav -->
+        <!-- Start .sidebar-panel -->
+        <div class="sidebar-panel">
+            <h4 class="sidebar-panel-title"><i class="im-fire"></i> Server usage</h4>
+            <div class="sidebar-panel-content">
+                <ul class="server-stats">
+                    <li>
+                        <span class="txt">Disk space</span>
+                        <span class="percent">78</span>
+                        <div id="usage-sparkline" class="sparkline">Loading...</div>
+                        <div class="pie-chart" data-percent="78"></div>
+                    </li>
+                </ul>
+                <ul class="server-stats">
+                    <li>
+                        <span class="txt">CPU</span>
+                        <span class="percent">56</span>
+                        <div id="cpu-sparkline" class="sparkline">Loading...</div>
+                        <div class="pie-chart" data-percent="56"></div>
+                    </li>
+                </ul>
+                <ul class="server-stats">
+                    <li>
+                        <span class="txt">Memory</span>
+                        <span class="percent">14</span>
+                        <div id="ram-sparkline" class="sparkline">Loading...</div>
+                        <div class="pie-chart" data-percent="14"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End .sidebar-panel -->
+    </div>
+    <!-- End .sidebar-inner -->
+</div>
+<!-- End #sidebar -->
+<!-- Start #right-sidebar -->
+<div id="right-sidebar" class="hide-sidebar">
+    <!-- Start .sidebar-inner -->
+    <div class="sidebar-inner">
+        <div class="sidebar-panel mt0">
+            <div class="sidebar-panel-content fullwidth pt0">
+                <div class="chat-user-list">
+                    <form class="form-horizontal chat-search" role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search for user...">
+                            <button type="submit"><i class="ec-search s16"></i>
+                            </button>
+                        </div>
+                        <!-- End .form-group  -->
+                    </form>
+                    <ul class="chat-ui bsAccordion">
+                        <li>
+                            <a href="#">Favorites <span class="notification teal">4</span><i class="en-arrow-down5"></i></a>
+                            <ul class="in">
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/49.jpg" alt="@chadengle">Chad Engle
+                                        <span class="has-message"><i class="im-pencil"></i></span>
+                                    </a>
+                                    <span class="status online"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/54.jpg" alt="@alagoon">Anthony Lagoon</a>
+                                    <span class="status offline"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/52.jpg" alt="@koridhandy">Kory Handy</a>
+                                    <span class="status"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/50.jpg" alt="@divya">Divia Manyan</a>
+                                    <span class="status"><i class="en-dot"></i></span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Online <span class="notification green">3</span><i class="en-arrow-down5"></i></a>
+                            <ul class="in">
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/51.jpg" alt="@kolage">Eric Hofman</a>
+                                    <span class="status online"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/55.jpg" alt="@mikebeecham">Mike Beecham</a>
+                                    <span class="status online"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/53.jpg" alt="@derekebradley">Darek Bradly</a>
+                                    <span class="status online"><i class="en-dot"></i></span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Offline <span class="notification red">5</span><i class="en-arrow-down5"></i></a>
+                            <ul>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/56.jpg" alt="@laurengray">Lauren Grey</a>
+                                    <span class="status offline"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/49.jpg" alt="@chadengle">Chad Engle</a>
+                                    <span class="status offline"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/58.jpg" alt="@frankiefreesbie">Frankie Freesibie</a>
+                                    <span class="status offline"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/57.jpg" alt="@joannefournier">Joane Fornier</a>
+                                    <span class="status offline"><i class="en-dot"></i></span>
+                                </li>
+                                <li>
+                                    <a href="#" class="chat-name">
+                                        <img class="chat-avatar" src="assets/img/avatars/59.jpg" alt="@aiiaiiaii">Alia Alien</a>
+                                    <span class="status offline"><i class="en-dot"></i></span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chat-box">
+                    <h5>Chad Engle</h5>
+                    <a id="close-user-chat" href="#" class="btn btn-xs btn-primary"><i class="en-arrow-left4"></i></a>
+                    <ul class="chat-ui chat-messages">
+                        <li class="chat-user">
+                            <p class="avatar">
+                                <img src="assets/img/avatars/49.jpg" alt="@chadengle">
+                            </p>
+                            <p class="chat-name">Chad Engle <span class="chat-time">15 seconds ago</span>
+                            </p>
+                            <span class="status online"><i class="en-dot"></i></span>
+                            <p class="chat-txt">Hello Sugge check out the last order.</p>
+                        </li>
+                        <li class="chat-me">
+                            <p class="avatar">
+                                <img src="assets/img/avatars/48.jpg" alt="SuggeElson">
+                            </p>
+                            <p class="chat-name">SuggeElson <span class="chat-time">10 seconds ago</span>
+                            </p>
+                            <span class="status online"><i class="en-dot"></i></span>
+                            <p class="chat-txt">Ok i will check it out.</p>
+                        </li>
+                        <li class="chat-user">
+                            <p class="avatar">
+                                <img src="assets/img/avatars/49.jpg" alt="@chadengle">
+                            </p>
+                            <p class="chat-name">Chad Engle <span class="chat-time">now</span>
+                            </p>
+                            <span class="status online"><i class="en-dot"></i></span>
+                            <p class="chat-txt">Thank you, have a nice day</p>
+                        </li>
+                    </ul>
+                    <div class="chat-write">
+                        <form action="#" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <textarea name="sendmsg" id="sendMsg" class="form-control elastic" rows="1"></textarea>
+                                <a role="button" class="btn" id="attach_photo_btn">
+                                    <i class="fa-picture s20"></i>
+                                </a>
+                                <input type="file" name="attach_photo" id="attach_photo">
+                            </div>
+                            <!-- End .form-group  -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End .sidebar-inner -->
+</div>
+<!-- End #right-sidebar -->
+<!-- Start #content -->
+<div id="content">
+    <!-- Start .content-wrapper -->
+    <div class="content-wrapper">
+        <div class="row">
+            <!-- Start .row -->
+            <!-- Start .page-header -->
+            <div class="col-lg-12 heading">
+                <h1 class="page-header"><i class="im-screen"></i> Blank page</h1>
+                <!-- Start .bredcrumb -->
+                <ul id="crumb" class="breadcrumb">
+                </ul>
+                <!-- End .breadcrumb -->
+                <!-- Start .option-buttons -->
+                <div class="option-buttons">
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group">
+                            <a id="clear-localstorage" class="btn tip" title="Reset panels position">
+                                <i class="ec-refresh color-red s24"></i>
+                            </a>
+                        </div>
+                        <div class="btn-group dropdown">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1"><i class="br-grid s24"></i></a>
+                            <div class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                                <div class="option-dropdown">
+                                    <div class="shortcut-button">
+                                        <a href="#">
+                                            <i class="im-pie"></i>
+                                            <span>Earning Stats</span>
+                                        </a>
+                                    </div>
+                                    <div class="shortcut-button">
+                                        <a href="#">
+                                            <i class="ec-images color-dark"></i>
+                                            <span>Gallery</span>
+                                        </a>
+                                    </div>
+                                    <div class="shortcut-button">
+                                        <a href="#">
+                                            <i class="en-light-bulb color-orange"></i>
+                                            <span>Fresh ideas</span>
+                                        </a>
+                                    </div>
+                                    <div class="shortcut-button">
+                                        <a href="#">
+                                            <i class="ec-link color-blue"></i>
+                                            <span>Links</span>
+                                        </a>
+                                    </div>
+                                    <div class="shortcut-button">
+                                        <a href="#">
+                                            <i class="ec-support color-red"></i>
+                                            <span>Support</span>
+                                        </a>
+                                    </div>
+                                    <div class="shortcut-button">
+                                        <a href="#">
+                                            <i class="st-lock color-teal"></i>
+                                            <span>Lock area</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group dropdown">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu2"><i class="ec-pencil s24"></i></a>
+                            <div class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu2">
+                                <div class="option-dropdown">
+                                    <div class="row">
+                                        <p class="col-lg-12">Quick post</p>
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <input type="text" class="form-control" placeholder="Enter title">
+                                                </div>
+                                            </div>
+                                            <!-- End .form-group  -->
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <textarea class="form-control wysiwyg" placeholder="Enter text"></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- End .form-group  -->
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <input type="text" class="form-control tags1" placeholder="Enter tags">
+                                                </div>
+                                            </div>
+                                            <!-- End .form-group  -->
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <button class="btn btn-default btn-xs">Save Draft</button>
+                                                    <button class="btn btn-success btn-xs pull-right">Publish</button>
+                                                </div>
+                                            </div>
+                                            <!-- End .form-group  -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu3"><i class="ec-help s24"></i></a>
+                            <div class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu3">
+                                <div class="option-dropdown">
+                                    <p>First time visitor ? <a href="#" id="app-tour" class="btn btn-success ml15">Take app tour</a>
+                                    </p>
+                                    <hr>
+                                    <p>Or check the <a href="#" class="btn btn-danger ml15">FAQ</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End .option-buttons -->
+            </div>
+            <div class="demo">
+                <div id="seat-map" class="seatCharts-container">
+                    <div class="front">屏幕</div>
+
+                </div>
+                <div id="legend"></div>
+                <div class="booking-details">
+                    <p>演出名称：<span id="ticketName">星际穿越3D</span></p>
+                    <p>简介：<span id="introduction"></span></p>
+                    <p>时间：<span id="time">11月14日 21:00</span></p>
+                    <p>地点：<span id="hostPlace">11月14日 21:00</span></p>
+                    <p>演出厅：<span id="place">11月14日 21:00</span></p>
+                    <p>座位：</p>
+                    <ul id="selected-seats"></ul>
+                    <p>票数：<span id="counter">0</span></p>
+                    <p>会员等级</p><input class="number" id="lv" onkeyup="calPrice()"/>
+                    <p>总计：<b>￥<span id="total">500</span></b></p>
+                    <button class="btn btn-success" onclick="clickSeat()">确认出售</button>
+
+                </div>
+            </div>
+            <!-- End .page-header -->
+        </div>
+        <!-- End .row -->
+        <div class="outlet">
+            <!-- Start .outlet -->
+            <!-- Page start here ( usual with .row ) -->
+            <div class="row">
+            </div>
+            <!-- Page End here -->
+        </div>
+        <!-- End .outlet -->
+    </div>
+    <!-- End .content-wrapper -->
+    <div class="clearfix"></div>
+</div>
+<!-- End #content -->
+<!-- Javascripts -->
+<!-- Load pace first -->
+
+<script src="assets/plugins/core/pace/pace.min.js"></script>
+<!-- Important javascript libs(put in all pages) -->
+<script src="assets/js/jquery-1.8.3.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="assets/js/libs/jquery-2.1.1.min.js">\x3C/script>')
+</script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+    window.jQuery || document.write('<script src="assets/js/libs/jquery-ui-1.10.4.min.js">\x3C/script>')
+</script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="assets/js/libs/excanvas.min.js"></script>
+<script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript" src="assets/js/libs/respond.min.js"></script>
+<![endif]-->
+<!-- Bootstrap plugins -->
+<script src="assets/js/bootstrap/bootstrap.js"></script>
+<!-- Core plugins ( not remove ever) -->
+<!-- Handle responsive view functions -->
+<script src="assets/js/jRespond.min.js"></script>
+<!-- Custom scroll for sidebars,tables and etc. -->
+<script src="assets/plugins/core/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="assets/plugins/core/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+<!-- Resize text area in most pages -->
+<script src="assets/plugins/forms/autosize/jquery.autosize.js"></script>
+<!-- Proivde quick search for many widgets -->
+<script src="assets/plugins/core/quicksearch/jquery.quicksearch.js"></script>
+<!-- Bootbox confirm dialog for reset postion on panels -->
+<script src="assets/plugins/ui/bootbox/bootbox.js"></script>
+<!-- Other plugins ( load only nessesary plugins for every page) -->
+<script src="assets/plugins/core/moment/moment.min.js"></script>
+<script src="assets/plugins/charts/sparklines/jquery.sparkline.js"></script>
+<script src="assets/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="assets/plugins/forms/icheck/jquery.icheck.js"></script>
+<script src="assets/plugins/forms/tags/jquery.tagsinput.min.js"></script>
+<script src="assets/plugins/forms/tinymce/tinymce.min.js"></script>
+<script src="assets/plugins/misc/highlight/highlight.pack.js"></script>
+<script src="assets/plugins/misc/countTo/jquery.countTo.js"></script>
+<script src="assets/js/jquery.sprFlat.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/pages/blank.js"></script>
+<script src="assets/js/jquery.seat-charts.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery.seat-charts.min.js"></script>
+<script src="js/requestUtil.js"></script>
+<script>
+
+    function calPrice() {
+        var hprice = $('#total').text();
+        var lv = $('#lv').val();
+        hprice=price*(1-lv*0.1);
+        $('#total').text(hprice);
+    }
+    var price = $('#total').html(); //票价
+    $(document).ready(function() {
+
+        doGet('seat/getSeat',function (data) {
+            var price = data.price;
+            var vipPrice =data.vipPrice;
+            var seatmap =data.siteMap;
+            var bookStr = data.bookSites;
+            var bookArray = new Array();
+            bookArray=bookStr.split(",");
+            console.log(bookArray);
+            console.log(data);
+            console.log(seatmap);
+            $('#ticketName').html(data.name);
+            $('#place').html(data.place);
+            $('#hostPlace').html(data.hostPlace);
+            $('#time').html(data.performTime);
+            $('#introduction').html(data.describes);
+
+            var $cart = $('#selected-seats'), //座位区
+                $counter = $('#counter'), //票数
+                $total = $('#total'); //总计金额
+
+
+            var sc = $('#seat-map').seatCharts({
+                map: seatmap,
+                seats:{
+                    a:{
+                        price: price,
+                        classes:'second-class'
+                    },
+                    b:{
+                        price:vipPrice,
+                        classes:'first-class'
+                    }
+                },
+                legend : { //定义图例
+                    node : $('#legend'),
+                    items : [
+                        [ 'a', 'available',   '普通座' ],
+                        [ 'a', 'unavailable', '已售出'],
+                        [ 'a', 'selected', '已选择'],
+                        [ 'b', 'available', '贵宾座']
+                    ]
+                },
+                click: function () { //点击事件
+                    if (this.status() == 'available') { //可选座
+                        $('<li>'+(this.settings.row+1)+'排'+this.settings.label+'座</li>')
+                            .attr('id', 'cart-item-'+this.settings.id)
+                            .data('seatId', this.settings.id)
+                            .appendTo($cart);
+
+                        $counter.text(sc.find('selected').length+1);
+                        $total.text(recalculateTotal(sc)+this.data().price);
+
+                        return 'selected';
+                    } else if (this.status() == 'selected') { //已选中
+                        //更新数量
+                        $counter.text(sc.find('selected').length-1);
+                        //更新总计
+                        $total.text(recalculateTotal(sc)-this.data().price);
+                        $('#total').text(recalculateTotal(sc)-this.data().price);
+                        //删除已预订座位
+                        $('#cart-item-'+this.settings.id).remove();
+                        //可选座
+                        return 'available';
+                    } else if (this.status() == 'unavailable') { //已售出
+                        return 'unavailable';
+                    } else {
+                        return this.style();
+                    }
+                }
+            });
+            //已售出的座位
+            sc.get(bookArray).status('unavailable');
+
+        });
+        //计算总金额
+        function recalculateTotal(sc) {
+            var total = 0;
+            sc.find('selected').each(function () {
+                total += this.data().price;
+            });
+
+            return total;
+        }
+    });
+    function clickSeat() {
+        var sc =  $('#seat-map').seatCharts();
+        var sites=[];
+        var name = $('#ticketName').html();
+        var hostPlace = $('#hostPlace').html();
+        var place = $('#place').html();
+        var time = $('#time').html();
+        var counter = $('#counter').html();
+        var totalPrice = $('#total').html();
+        sc.find('selected').each(function () {
+            sites.push(this.settings.id);
+        });
+        var data={
+            "lv":$('#lv').val(),
+            "sites":sites,
+            "totalPrice":totalPrice
+        };
+
+        console.log(data);
+        $.ajax({
+            type: 'POST',
+            url: "/host/sellSites",
+            data: JSON.stringify(data),
+            dataType:"json",
+            success: function(msg){
+                alert(msg)
+                if(msg!=null) {
+
+                    window.location.href = "hostPerformList.html";
+                }
+            },
+            error: function (){
+
+            },
+            contentType: "application/json;charset=utf-8"
+        });
+        window.location.href = "/hostPerformList.html";
+    }
+</script>
+</body>
+</html>
